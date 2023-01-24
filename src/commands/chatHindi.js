@@ -22,8 +22,6 @@ module.exports = {
 		await interaction.deferReply({ephemeral: ephemeral})
         translation = await translate(message)
         messageToReply = await chatBot(translation, interaction.user.id)
-		console.log(messageToReply);
-		console.log(translation);
 		interaction.editReply({content: messageToReply})
 	},
 };
