@@ -1,5 +1,6 @@
 require('dotenv').config()
-const translate = require('@plainheart/google-translate-api');
+// This package(google-translate-api) was been cloned from https://github.com/plainheart/google-translate-api due to some hosing issues with this package
+const translate = require('./google-translate-api');
 
 
 

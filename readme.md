@@ -8,7 +8,6 @@
 ## Get your api key from [brainshop](https://brainshop.ai/)
 ### paste it in .env file
 ## Optional:
-### Get another api key (Only if you want to use translate) from [RapidApi](https://rapidapi.com/sibaridev/api/rapid-translate-multi-traduction/)
 ##### If you want to use any other languages, go to translate.js and you can change target and source
 ### If you dont want to use translate
 ##### Delete the following Files: translate.js, chatHindi.js
