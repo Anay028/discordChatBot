@@ -1,5 +1,5 @@
-const translate = require('../translate.js')
 require('dotenv').config()
+const translate = require('../translate.js')
 const { SlashCommandBuilder } = require('discord.js');
 const chatBot = require('../chatbot.js')
 module.exports = {
