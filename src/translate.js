@@ -5,6 +5,17 @@ const translate = require('google-translate-api');
 const translate = require("@plainheart/google-translate-api")
 }
 module.exports = async function(query){
+    try{
 translation = await translate(query, {to: 'en'})
-return translation.text
+    } catch (err){
+return {
+    success: false,
+    error: toString(err)
+}
+    }
+return {
+    success: true,
+    error: false,
+    translation: translation.text,
+}
 }

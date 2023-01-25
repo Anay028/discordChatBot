@@ -21,6 +21,9 @@ module.exports = {
 		ephemeral = ephemeral ? true : false
 		await interaction.deferReply({ephemeral: ephemeral})
         translation = await translate(message)
+		if(!translation.success){
+			return interaction.editReply({content: "Opps, it looks like an error has occured! Please report to the developer! Error code: \n ```js\n" + translation.error + "\n ```"})
+		}
         messageToReply = await chatBot(translation, interaction.user.id)
 		interaction.editReply({content: messageToReply})
 	},
