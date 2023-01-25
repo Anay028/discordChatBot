@@ -8,6 +8,7 @@ module.exports = async function(query){
     try{
 translation = await translate(query, {to: 'en'})
     } catch (err){
+        console.error(err)
 return {
     success: false,
     error: err
