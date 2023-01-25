@@ -10,7 +10,7 @@ translation = await translate(query, {to: 'en'})
     } catch (err){
 return {
     success: false,
-    error: toString(err)
+    error: err
 }
     }
 return {
