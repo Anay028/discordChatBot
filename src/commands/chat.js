@@ -21,6 +21,6 @@ module.exports = {
 		ephemeral = ephemeral ? true : false
 		await interaction.deferReply({ephemeral: ephemeral})
         messageToReply = await chatBot(message, interaction.user.id)
-		interaction.editReply({content: messageToReply})
+		interaction.editReply({content: messageToReply || "It looks like the bot didn't give a reply to this query"})
 	},
 };
