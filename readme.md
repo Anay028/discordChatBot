@@ -5,12 +5,8 @@
 
 
 ## Api Key guide
-## Get your api key from [brainshop](https://brainshop.ai/)
+## Get your api key from [brainshop](https://aistudio.google.com/)
 ### paste it in .env file
-## Optional:
-##### If you want to use any other languages, go to translate.js and you can change target and source
-### If you dont want to use translate
-##### Delete the following Files: translate.js, chatHindi.js
 ## If you are not using a free platform like render.com
 #### then make sure to remove require("web.js") from index.js.
 

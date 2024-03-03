@@ -28,12 +28,12 @@ throw Error("No token in .env")
 client.on(Events.MessageCreate, async message => {
     // Message = djs Object
     // msg = msg to reply returned from api
-    if (!message.channel.name.includes('chatbot') || message.author.bot || message.content.startsWith("!") ){
+    if (!message.channel.name.includes('chatbot') || message.author.bot || message.content.startsWith("b!") ){
         return; 
     }
 
     message.channel.sendTyping()
-    let content = message.content.replace("@", '').replace("female", "male")
+    let {content} = message
     msg = await chatBot(content, message.author.id)
     message.reply({content: msg})
 })
@@ -53,7 +53,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	} catch (error) {
 		console.error(error);
 
-		// await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true })
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true })
 		} 
     })
 

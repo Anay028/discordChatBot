@@ -1,14 +1,57 @@
 require("dotenv").config()
 
-if(!process.env['bid'] || !process.env['key']){
-    throw Error("There must a valid bid and key value in .env, refer to readme.md for more info!")
-}
+const {
+    GoogleGenerativeAI,
+    HarmCategory,
+    HarmBlockThreshold,
+  } = require("@google/generative-ai");
 
-async function chat(message, id){
+  
+const MODEL_NAME = "gemini-1.0-pro";
+const API_KEY = process.env['apiKey'];
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    const model = genAI.getGenerativeModel({ model: MODEL_NAME });
+  
+    const generationConfig = {
+      temperature: 0.9,
+      topK: 1,
+      topP: 1,
+      maxOutputTokens: 1024,
+    };
+  
+    const safetySettings = [
+      {
+        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+      },
+    ];
+  
+    const chat = model.startChat({
+      generationConfig,
+      safetySettings,
+      history: [],
+    });
+  
+  
+
+
+async function chatBot(message, id){ //TODO: work something with id
 try{
-response = await (await fetch(`http://api.brainshop.ai/get?bid=${process.env['bid']}&key=${process.env['key']}&uid=${id}&msg=${message}`)).json()
-response = response.cnt.replace("Aco", "ChatBot")
-return response
+    const result = await chat.sendMessage(message);
+    const response = result.response;
+return response.text()
 } catch(err){
     console.log(err);
     console.log(response);
@@ -19,4 +62,4 @@ return response
 }
 
 
-module.exports = chat
+module.exports = chatBot

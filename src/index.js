@@ -1,3 +1,3 @@
-//Github: @Anay028
+//Github: @Anay-208
 require("./bot.js")
-require("./web.js")
+// require("./web.js")
