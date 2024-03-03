@@ -35,7 +35,7 @@ client.on(Events.MessageCreate, async message => {
     message.channel.sendTyping()
     let {content} = message
     msg = await chatBot(content, message.author.id)
-    message.reply({content: msg})
+    message.reply({content: msg || "It looks like the bot didn't give a reply to this query"})
 })
 
 client.on(Events.InteractionCreate, async interaction => {
