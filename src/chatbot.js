@@ -16,7 +16,7 @@ const API_KEY = process.env['apiKey'];
       temperature: 0.9,
       topK: 1,
       topP: 1,
-      maxOutputTokens: 1024,
+      maxOutputTokens: 250,
     };
   
     const safetySettings = [
